@@ -1,7 +1,17 @@
 <script>
   const urlPath = window.location.pathname
   add_p_element(urlPath)
-  add_p_element(trim_DotHtm(urlPath))
+  const pathWithoutDotHtm = trim_DotHtm(urlPath)
+  add_p_element(pathWithoutDotHtm)
+
+  const lastSlash = pathWithoutDotHtm.lastIndexOf('/')
+  const commandQuery = pathWithoutDotHtm.slice(lastSlash + 1)
+  add_p_element(commandQuery)
+
+  queryToCommand_Object = {'msgbox':'MsgBox'}
+  const command = queryToCommand_Object[commandQuery] || commandQuery
+  const newUrl = `https://fupeijiang.github.io/lexikos.github.io/v1/docs/commands/${command}.htm`
+  add_p_element(newUrl)
 
   function trim_DotHtm(str) {
     // ".htm"
