@@ -12,6 +12,7 @@
   const command = queryToCommand_Object[commandQuery] || commandQuery
   const newUrl = `https://fupeijiang.github.io/lexikos.github.io/v1/docs/commands/${command}.htm`
   add_p_element(newUrl)
+  window.location = newUrl
 
   function trim_DotHtm(str) {
     // ".htm"
@@ -19,6 +20,7 @@
   }
 
   function add_p_element(text) {
+    return
     const p = document.createElement('p')
     p.textContent = text
     document.documentElement.appendChild(p)
